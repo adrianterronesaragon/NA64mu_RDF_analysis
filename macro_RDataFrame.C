@@ -13,7 +13,7 @@ void macro_RDataFrame() {
 
 	// Definition of the data frame
 	ROOT::EnableImplicitMT(); // Tell ROOT you want to go parallel
-	ROOT::RDataFrame d("ana_tree", "Reco_2305_160gev_V1.1.root"); // Interface to TTree and TChain
+	ROOT::RDataFrame d("ana_tree", "../Reco_2305_160gev_V1.1.root"); // Interface to TTree and TChain
 
 	//ROOT::RDataFrame d0("ana_tree", "Reco_2305_160gev_V1.1.root");
 	//auto d = d0.Range(0, 1000000);
@@ -113,20 +113,14 @@ void macro_RDataFrame() {
 			TString k_str = (TString) to_string(k);
 			TString i_str = (TString) to_string(i);
 			TString j_str = (TString) to_string(j);
-			//cout << k_str + "\t" + i_str + "\t" + j_str << endl;
 			TString str = (TString)"ECALenergy" + i_str + j_str;
-			//TString col_str = (TString)"ECALenergy[" + k_str + "]";
-			//string_view col_str_v = col_str.Data();
-			string_view col_str_v = "ECALenergy[" + k_str + "]";
-			hECALenergy[i][j] = d.Define(str, col_str_v).Histo1D({(TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 190}, str);
-			//hECALenergy[i][j] = d.Define(str, "ECALenergy[k]").Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 190 }, str);
-			//hECALenergy[i][j] = d.Define(str, "ECALenergy[i + (j * n_ECALx)]").Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 190 }, str);
-			//hECALenergy[i][j] = d.Define(str, "ECALenergy[0]").Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 150 }, str);
+			string_view col_str = "ECALenergy[" + k_str + "]";
+			hECALenergy[i][j] = d.Define(str, col_str).Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 20 }, str);
 		};
 	};
 	//
-	int n_VHCALx = 4;
-	int n_VHCALy = 4;
+	int n_VHCALx = 3;
+	int n_VHCALy = 3;
 	ROOT::RDF::RResultPtr<TH1D> hVHCALenergy[n_VHCALx][n_VHCALy];
 	for (int i = 0; i < n_VHCALx; i++) {
 		for (int j = 0; j < n_VHCALy; j++) {
@@ -134,52 +128,44 @@ void macro_RDataFrame() {
 			TString k_str = (TString)to_string(k);
 			TString i_str = (TString)to_string(i);
 			TString j_str = (TString)to_string(j);
-			//cout << k_str + "\t" + i_str + "\t" + j_str << endl;
+			cout << k_str + "\t" + i_str + "\t" + j_str << endl;
 			TString str = (TString)"VHCALenergy" + i_str + j_str;
-			TString col_str = (TString)"VHCALenergy[" + k_str + "]";
-			//hVHCALenergy[i][j] = d.Define(str, (TString)"VHCALenergy[" + k_str + "]").Histo1D({(TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 190}, str);
-			//hVHCALenergy[i][j] = d.Define(str, "VHCALenergy[k]").Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 190 }, str);
-			//hVHCALenergy[i][j] = d.Define(str, "VHCALenergy[i + (j * n_VHCALx)]").Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 190 }, str);
-			hVHCALenergy[i][j] = d.Define(str, "VHCALenergy[0]").Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 150 }, str);
+			string_view col_str = "VHCALenergy[" + k_str + "]";
+			cout << str + "\t" << col_str << endl;
+			hVHCALenergy[i][j] = d.Define(str, col_str).Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 20 }, str);
 		};
 	};
+	int x = d.Take<ROOT::VecOps::RVec<double>>("VHCALenergy")->at(0).size();
+	cout << x << endl;
+	return;
 	//
 	/*
-	int n_HCAL0x = 6;
-	int n_HCAL0y = 3;
-	ROOT::RDF::RResultPtr<TH1D> hHCAL0energy[n_HCAL0x][n_HCAL0y];
-	for (int i = 0; i < n_HCAL0x; i++) {
-		for (int j = 0; j < n_HCAL0y; j++) {
-			int k = i + (j * n_HCAL0x);
+	int n_HCALx = 6;
+	int n_HCALy = 3;
+	ROOT::RDF::RResultPtr<TH1D> hHCAL0energy[n_HCALx][n_HCALy];
+	for (int i = 0; i < n_HCALx; i++) {
+		for (int j = 0; j < n_HCALy; j++) {
+			int k = i + (j * n_HCALx);
 			TString k_str = (TString)to_string(k);
 			TString i_str = (TString)to_string(i);
 			TString j_str = (TString)to_string(j);
-			//cout << k_str + "\t" + i_str + "\t" + j_str << endl;
 			TString str = (TString)"HCAL0energy" + i_str + j_str;
-			TString col_str = (TString)"HCAL0energy[" + k_str + "]";
-			//hHCAL0energy[i][j] = d.Define(str, (TString)"HCAL0energy[" + k_str + "]").Histo1D({(TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 190}, str);
-			//hHCAL0energy[i][j] = d.Define(str, "HCAL0energy[k]").Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 190 }, str);
-			//hHCAL0energy[i][j] = d.Define(str, "HCAL0energy[i + (j * n_HCAL0x)]").Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 190 }, str);
-			hHCAL0energy[i][j] = d.Define(str, "HCAL0energy[0]").Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 150 }, str);
+			string_view col_str = "HCALenergy[" + k_str + "]";
+			hHCAL0energy[i][j] = d.Define(str, col_str).Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 20 }, str);
 		};
 	};
-	//
-	int n_HCAL1x = 4;
-	int n_HCAL1y = 4;
-	ROOT::RDF::RResultPtr<TH1D> hHCAL1energy[n_HCAL1x][n_HCAL1y];
-	for (int i = 0; i < n_HCAL1x; i++) {
-		for (int j = 0; j < n_HCAL1y; j++) {
-			int k = i + (j * n_HCAL1x);
+	
+	ROOT::RDF::RResultPtr<TH1D> hHCAL1energy[n_HCALx][n_HCALy];
+	for (int i = 0; i < n_HCALx; i++) {
+		for (int j = 0; j < n_HCALy; j++) {
+			int k = i + (j * n_HCALx);
 			TString k_str = (TString)to_string(k);
 			TString i_str = (TString)to_string(i);
 			TString j_str = (TString)to_string(j);
 			//cout << k_str + "\t" + i_str + "\t" + j_str << endl;
 			TString str = (TString)"HCAL1energy" + i_str + j_str;
-			TString col_str = (TString)"HCAL1energy[" + k_str + "]";
-			//hHCAL1energy[i][j] = d.Define(str, (TString)"HCAL1energy[" + k_str + "]").Histo1D({(TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 190}, str);
-			//hHCAL1energy[i][j] = d.Define(str, "HCAL1energy[k]").Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 190 }, str);
-			//hHCAL1energy[i][j] = d.Define(str, "HCAL1energy[i + (j * n_HCAL1x)]").Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 190 }, str);
-			hHCAL1energy[i][j] = d.Define(str, "HCAL1energy[0]").Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 150 }, str);
+			string_view col_str = "HCALenergy[" + k_str + "]";
+			hHCAL1energy[i][j] = d.Define(str, col_str).Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 20 }, str);
 		};
 	};
 	*/
@@ -385,7 +371,8 @@ void macro_RDataFrame() {
 			histogram_plot(hECALenergy[i][j], (TString)"RDF_hECALenergy" + i_str + j_str, "Energy [GeV]", "Events", 1);
 		};
 	};
-
+	//
+	/*
 	for (int i = 0; i < n_VHCALx; i++) {
 		for (int j = 0; j < n_VHCALy; j++) {
 			TString i_str = (TString)to_string(i);
@@ -393,17 +380,19 @@ void macro_RDataFrame() {
 			histogram_plot(hVHCALenergy[i][j], (TString)"RDF_hVHCALenergy" + i_str + j_str, "Energy [GeV]", "Events", 1);
 		};
 	};
-	/*
-	for (int i = 0; i < n_HCAL0x; i++) {
-		for (int j = 0; j < n_HCAL0y; j++) {
+	
+	//
+	for (int i = 0; i < n_HCALx; i++) {
+		for (int j = 0; j < n_HCALy; j++) {
 			TString i_str = (TString)to_string(i);
 			TString j_str = (TString)to_string(j);
 			histogram_plot(hHCAL0energy[i][j], (TString)"RDF_hHCAL0energy" + i_str + j_str, "Energy [GeV]", "Events", 1);
 		};
 	};
-
-	for (int i = 0; i < n_HCAL1x; i++) {
-		for (int j = 0; j < n_HCAL1y; j++) {
+	//
+	
+	for (int i = 0; i < n_HCALx; i++) {
+		for (int j = 0; j < n_HCALy; j++) {
 			TString i_str = (TString)to_string(i);
 			TString j_str = (TString)to_string(j);
 			histogram_plot(hHCAL1energy[i][j], (TString)"RDF_hHCAL1energy" + i_str + j_str, "Energy [GeV]", "Events", 1);
@@ -567,7 +556,7 @@ void macro_RDataFrame() {
 	std::cout << *c_S0S1 << " entries passed the cut on S0 and S1 and had a hit on V0" << std::endl;
 	
 
-	///*
+	/*
 	// Show the properties of the data frame
 	d.Describe().Print();
 	std::cout << std::endl;

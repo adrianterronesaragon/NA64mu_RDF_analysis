@@ -21,7 +21,7 @@ void histogram_plot(ROOT::RDF::RResultPtr<TH1D> histo, TString name, const char*
 	gPad->SetLogy(setlog);
 	canvas->Update();
 
-	canvas->SaveAs((TString)name + ".png");
+	canvas->SaveAs("../" + (TString)name + ".png");
 }
 
 void histogram_plot(ROOT::RDF::RResultPtr<TH2D> histo, TString name, const char* xlabel = "", const char* ylabel = "", int setlog = 0, int canvasform = 1, float xlabeloffset = 0.005, float ylabeloffset = 0.005, float xlabelsize = 0.04, float ylabelsize = 0.04, const char* drawoption = "", const char* canvasname = "", const char* canvastitle = "") {
@@ -45,5 +45,5 @@ void histogram_plot(ROOT::RDF::RResultPtr<TH2D> histo, TString name, const char*
 	gPad->SetLogz(setlog);
 	canvas->Update();
 
-	canvas->SaveAs((TString) name + ".png");
+	canvas->SaveAs("../" + (TString) name + ".png");
 }
