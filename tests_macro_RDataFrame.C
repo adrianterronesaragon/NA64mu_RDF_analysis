@@ -58,7 +58,73 @@ void tests_macro_RDataFrame() {
 	// Calorimeter cells
 	int n_ECALx = 5;
 	int n_ECALy = 6;
-	
+
+
+
+
+	// Initial values
+	double t_spill = 4.8e9; // ns
+	double t_accept = 10; // ns
+	unsigned int n_bins = (unsigned int)(t_spill / t_accept);
+	auto n_events = d.Count();
+
+	// test values
+	n_bins = 30;
+	*n_events = 100;
+
+	// Random object definition
+	TRandom3* random = new TRandom3();
+
+	// Generate random bin tags and sort them
+	ROOT::VecOps::RVec<int> bins_t;
+	for (int i = 0; i < *n_events; i++) {
+		bins_t.push_back(random->Integer(n_bins));
+	}
+	auto bins_t_sorted = Take(bins_t, Argsort(bins_t));
+
+	// Count and store the multiplicities of the bin tags
+	ROOT::VecOps::RVec<int> bin_multiplicities_t {1};
+	int c = 0;
+	for (int i = 0; i < bins_t_sorted.size() - 1; i++) {
+		if (bins_t_sorted.at(i) == bins_t_sorted.at(i + 1)) {
+			bin_multiplicities_t.at(c)++;
+		}
+		else {
+			bin_multiplicities_t.push_back(1);
+			c++;
+		}
+	}
+
+	// New data frame
+	ROOT::RDataFrame d_accidentals(bin_multiplicities_t.size());
+	int b = 0;
+	ROOT::VecOps::RVec<int> a;
+	for (int i = 0; i < bin_multiplicities_t.size(); i++) {
+		a.push_back(*d.Range(b, b + bin_multiplicities_t.at(i)).Sum("ECALtot"));
+		b = b + bin_multiplicities_t.at(i);
+	}
+	//d_accidentals.Define("ECALtot", );
+
+
+	cout << bins_t_sorted << endl;
+	cout << bin_multiplicities_t << endl;
+
+	//*
+	// Show the properties of the data frame
+	d_accidentals.Describe().Print();
+	std::cout << std::endl;
+	// Alternative way: std::cout << d.Describe().AsString() << std::endl;
+	//*/
+
+
+
+
+
+
+
+
+
+
 	// Set ups
 	// 
 	// 
@@ -67,6 +133,7 @@ void tests_macro_RDataFrame() {
 	ROOT::RDF::RResultPtr<TH2D> hMM1xy_test;
 	//
 	ROOT::RDF::RResultPtr<TH1D> hECALenergy_test[n_ECALx][n_ECALy];
+	//
 	//if (blocks == 1 || blocks == 0) {
 	/*
 		// Histograms
@@ -165,10 +232,11 @@ void tests_macro_RDataFrame() {
 	cout << HCALy << endl;
 	*/
 
-	
+	//*
 	// Show the properties of the data frame
 	d.Describe().Print();
 	std::cout << std::endl;
 	// Alternative way: std::cout << d.Describe().AsString() << std::endl;
-	
+	//*/
+
 }
