@@ -1,5 +1,4 @@
 
-
 void histogram_plot(ROOT::RDF::RResultPtr<TH1D> histo, TString name, const char* xlabel = "", const char* ylabel = "", int setlog = 0, int canvasform = 1, float xlabeloffset = 1, float ylabeloffset = 1, float xlabelsize = 0.04, float ylabelsize = 0.04, const char* drawoption = "", const char* canvasname = "", const char* canvastitle = "") {
 
 	// Axis labels
