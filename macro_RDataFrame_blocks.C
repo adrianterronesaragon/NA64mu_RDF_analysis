@@ -72,7 +72,7 @@ void macro_RDataFrame_blocks() {
 	// 
 	//
 	// Binning
-	const int nbins = 400;
+	const int nbins = 100;
 	//
 	// Histogram limits
 	double xlow_MM5 = -174 - 10;
@@ -1020,7 +1020,7 @@ void macro_RDataFrame_blocks() {
 				TString j_str = (TString)to_string(j);
 				TString str = (TString)"ECALenergy_cut_S0S1S4SmuantiV0_" + i_str + j_str;
 				TString col = (TString)"ECALenergy_" + i_str + j_str;
-				hECALenergy_cut_S0S1S4SmuantiV0[i][j] = f_S0S1S4SmuantiV0.Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 10 }, col);
+				hECALenergy_cut_S0S1S4SmuantiV0[i][j] = f_S0S1S4SmuantiV0.Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 2 }, col);
 			};
 		};
 		//
@@ -1192,7 +1192,7 @@ void macro_RDataFrame_blocks() {
 				TString j_str = (TString)to_string(j);
 				TString str = (TString)"ECALenergy_cut_S4antiS0S1_" + i_str + j_str;
 				TString col = (TString)"ECALenergy_" + i_str + j_str;
-				hECALenergy_cut_S4antiS0S1[i][j] = f_S4antiS0S1.Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 10 }, col);
+				hECALenergy_cut_S4antiS0S1[i][j] = f_S4antiS0S1.Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, -1e-6, 2 }, col);
 			};
 		};
 		//
