@@ -15,7 +15,7 @@ bool digit_check(int digit, int number) {
 	return b;
 }
 
-void macro_RDataFrame_blocks() {
+void macro_accidentals_RDataFrame_blocks() {
 
 	// Selection of blocks to run
 	cout << endl;
@@ -58,7 +58,7 @@ void macro_RDataFrame_blocks() {
 
 	// Definition of the data frame
 	ROOT::EnableImplicitMT(); // Tell ROOT you want to go parallel
-	ROOT::RDataFrame d0("ana_tree", "../Reco_2305_160gev_V1.7.root"); // Interface to TTree and TChain
+	ROOT::RDataFrame d0("accidentals_tree", "../Reco_2305_160gev_V1.7_accidentals.root"); // Interface to TTree and TChain
 
 	//ROOT::RDataFrame d0("ana_tree", "Reco_2305_160gev_V1.7.root");
 	//auto d = d0.Range(0, 1000000);
@@ -219,7 +219,7 @@ void macro_RDataFrame_blocks() {
 	ROOT::RDF::RResultPtr<TH1D> hV0;
 	//
 	//
-	ROOT::RDF::RResultPtr<TH1D> hBeamEnergy0;
+	//ROOT::RDF::RResultPtr<TH1D> hBeamEnergy0;
 	//
 	ROOT::RDF::RResultPtr<TH1D> hECALtot;
 	//
@@ -283,7 +283,7 @@ void macro_RDataFrame_blocks() {
 		hV0 = d.Histo1D({ "Name_hV0","Title_V0", nbins, low_cals, 1e-2 }, "V0");
 		//
 		// 
-		hBeamEnergy0 = d.Histo1D({ "Name_hBeamEnergy0","Title_hBeamEnergy0", nbins, 0, 220 }, "BeamEnergy0");
+		//hBeamEnergy0 = d.Histo1D({ "Name_hBeamEnergy0","Title_hBeamEnergy0", nbins, 0, 220 }, "BeamEnergy0");
 		//
 		hECALtot = d.Histo1D({ "Name_hECALtot","Title_hECALtot", nbins, low_cals, up_cals }, "ECALtot");
 		//
@@ -390,7 +390,7 @@ void macro_RDataFrame_blocks() {
 	ROOT::RDF::RResultPtr<TH1D> hV0_cut_S0S1;
 	//
 	//
-	ROOT::RDF::RResultPtr<TH1D> hBeamEnergy0_cut_S0S1;
+	//ROOT::RDF::RResultPtr<TH1D> hBeamEnergy0_cut_S0S1;
 	//
 	ROOT::RDF::RResultPtr<TH1D> hECALtot_cut_S0S1;
 	//
@@ -510,7 +510,7 @@ void macro_RDataFrame_blocks() {
 	ROOT::RDF::RResultPtr<TH1D> hV0_cut_S0S1antiV0;
 	//
 	//
-	ROOT::RDF::RResultPtr<TH1D> hBeamEnergy0_cut_S0S1antiV0;
+	//ROOT::RDF::RResultPtr<TH1D> hBeamEnergy0_cut_S0S1antiV0;
 	//
 	ROOT::RDF::RResultPtr<TH1D> hECALtot_cut_S0S1antiV0;
 	//
@@ -635,7 +635,7 @@ void macro_RDataFrame_blocks() {
 		};
 		//
 		//
-		hS4_cut_S0S1antiV0 = f_S0S1antiV0.Histo2D({ "S4_cut_S0S1antiV0", "S4 events_cut_S0S1antiV0", nbins, -1000, 1000, nbins, -1770, -1550 }, "s4x", "s4y");
+		//hS4_cut_S0S1antiV0 = f_S0S1antiV0.Histo2D({ "S4_cut_S0S1antiV0", "S4 events_cut_S0S1antiV0", nbins, -1000, 1000, nbins, -1770, -1550 }, "s4x", "s4y");
 		
 	}
 	//
@@ -682,7 +682,7 @@ void macro_RDataFrame_blocks() {
 	ROOT::RDF::RResultPtr<TH1D> hV0_cut_antiS0S1;
 	//
 	//
-	ROOT::RDF::RResultPtr<TH1D> hBeamEnergy0_cut_antiS0S1;
+	//ROOT::RDF::RResultPtr<TH1D> hBeamEnergy0_cut_antiS0S1;
 	//
 	ROOT::RDF::RResultPtr<TH1D> hECALtot_cut_antiS0S1;
 	//
@@ -807,7 +807,7 @@ void macro_RDataFrame_blocks() {
 		};
 		//
 		//
-		hS4_cut_antiS0S1 = f_antiS0S1.Histo2D({ "S4_cut_antiS0S1", "S4 events_cut_antiS0S1", nbins, -1000, 1000, nbins, -1770, -1550 }, "s4x", "s4y");
+		//hS4_cut_antiS0S1 = f_antiS0S1.Histo2D({ "S4_cut_antiS0S1", "S4 events_cut_antiS0S1", nbins, -1000, 1000, nbins, -1770, -1550 }, "s4x", "s4y");
 		
 	}
 	//
@@ -854,7 +854,7 @@ void macro_RDataFrame_blocks() {
 	ROOT::RDF::RResultPtr<TH1D> hV0_cut_S0S1V0;
 	//
 	//
-	ROOT::RDF::RResultPtr<TH1D> hBeamEnergy0_cut_S0S1V0;
+	//ROOT::RDF::RResultPtr<TH1D> hBeamEnergy0_cut_S0S1V0;
 	//
 	ROOT::RDF::RResultPtr<TH1D> hECALtot_cut_S0S1V0;
 	//
@@ -940,7 +940,7 @@ void macro_RDataFrame_blocks() {
 	ROOT::RDF::RResultPtr<TH1D> hV0_cut_S0S1S4SmuantiV0;
 	//
 	//
-	ROOT::RDF::RResultPtr<TH1D> hBeamEnergy0_cut_S0S1S4SmuantiV0;
+	//ROOT::RDF::RResultPtr<TH1D> hBeamEnergy0_cut_S0S1S4SmuantiV0;
 	//
 	ROOT::RDF::RResultPtr<TH1D> hECALtot_cut_S0S1S4SmuantiV0;
 	//
@@ -1065,7 +1065,7 @@ void macro_RDataFrame_blocks() {
 		};
 		//
 		//
-		hS4_cut_S0S1S4SmuantiV0 = f_S0S1S4SmuantiV0.Histo2D({ "S4_cut_S0S1S4SmuantiV0", "S4 events_cut_S0S1S4SmuantiV0", nbins, -1000, 1000, nbins, -1770, -1550 }, "s4x", "s4y");
+		//hS4_cut_S0S1S4SmuantiV0 = f_S0S1S4SmuantiV0.Histo2D({ "S4_cut_S0S1S4SmuantiV0", "S4 events_cut_S0S1S4SmuantiV0", nbins, -1000, 1000, nbins, -1770, -1550 }, "s4x", "s4y");
 
 	}
 	//
@@ -1112,7 +1112,7 @@ void macro_RDataFrame_blocks() {
 	ROOT::RDF::RResultPtr<TH1D> hV0_cut_S4antiS0S1;
 	//
 	//
-	ROOT::RDF::RResultPtr<TH1D> hBeamEnergy0_cut_S4antiS0S1;
+	//ROOT::RDF::RResultPtr<TH1D> hBeamEnergy0_cut_S4antiS0S1;
 	//
 	ROOT::RDF::RResultPtr<TH1D> hECALtot_cut_S4antiS0S1;
 	//
@@ -1237,7 +1237,7 @@ void macro_RDataFrame_blocks() {
 		};
 		//
 		//
-		hS4_cut_S4antiS0S1 = f_S4antiS0S1.Histo2D({ "S4_cut_S4antiS0S1", "S4 events_cut_S4antiS0S1", nbins, -1000, 1000, nbins, -1770, -1550 }, "s4x", "s4y");
+		//hS4_cut_S4antiS0S1 = f_S4antiS0S1.Histo2D({ "S4_cut_S4antiS0S1", "S4 events_cut_S4antiS0S1", nbins, -1000, 1000, nbins, -1770, -1550 }, "s4x", "s4y");
 
 	}
 	//
@@ -1264,8 +1264,8 @@ void macro_RDataFrame_blocks() {
 
 		cout << "tests ";
 
-		hHCAL1tot_HighEnergy = d.Filter("BeamEnergy0 < 160 && BeamEnergy0 > 140 && HCAL1tot > 160")
-								.Histo1D({ "HCAL1tot events with 140 GeV < BeamEnergy0 < 160 GeV ","HCAL1tot events with 140 GeV < BeamEnergy0 < 160 GeV",nbins,150,220 }, "HCAL1tot");
+		//hHCAL1tot_HighEnergy = d.Filter("BeamEnergy0 < 160 && BeamEnergy0 > 140 && HCAL1tot > 160")
+		//						.Histo1D({ "HCAL1tot events with 140 GeV < BeamEnergy0 < 160 GeV ","HCAL1tot events with 140 GeV < BeamEnergy0 < 160 GeV",nbins,150,220 }, "HCAL1tot");
 	}
 	//
 	cout << endl;
@@ -1283,56 +1283,56 @@ void macro_RDataFrame_blocks() {
 	if (bool_unfiltered) {
 
 		// Plots
-		//histogram_plot(hMM1x, "RDF_hMM1x", "x[mm]", "Events");
-		//histogram_plot(hMM1y, "RDF_hMM1y", "y[mm]", "Events");
-		histogram_plot(hMM1xy, "RDF_hMM1xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM1x, "acc_RDF_hMM1x", "x[mm]", "Events");
+		//histogram_plot(hMM1y, "acc_RDF_hMM1y", "y[mm]", "Events");
+		histogram_plot(hMM1xy, "acc_RDF_hMM1xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		// 
-		//histogram_plot(hMM2x, "RDF_hMM2x", "x[mm]", "Events");
-		//histogram_plot(hMM2y, "RDF_hMM2y", "y[mm]", "Events");
-		histogram_plot(hMM2xy, "RDF_hMM2xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM2x, "acc_RDF_hMM2x", "x[mm]", "Events");
+		//histogram_plot(hMM2y, "acc_RDF_hMM2y", "y[mm]", "Events");
+		histogram_plot(hMM2xy, "acc_RDF_hMM2xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hMM3x, "RDF_hMM3x", "x[mm]", "Events");
-		//histogram_plot(hMM3y, "RDF_hMM3y", "y[mm]", "Events");
-		histogram_plot(hMM3xy, "RDF_hMM3xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM3x, "acc_RDF_hMM3x", "x[mm]", "Events");
+		//histogram_plot(hMM3y, "acc_RDF_hMM3y", "y[mm]", "Events");
+		histogram_plot(hMM3xy, "acc_RDF_hMM3xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hMM4x, "RDF_hMM4x", "x[mm]", "Events");
-		//histogram_plot(hMM4y, "RDF_hMM4y", "y[mm]", "Events");
-		histogram_plot(hMM4xy, "RDF_hMM4xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM4x, "acc_RDF_hMM4x", "x[mm]", "Events");
+		//histogram_plot(hMM4y, "acc_RDF_hMM4y", "y[mm]", "Events");
+		histogram_plot(hMM4xy, "acc_RDF_hMM4xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hGEM1x, "RDF_hGEM1x", "x[mm]", "Events");
-		//histogram_plot(hGEM1y, "RDF_hGEM1y", "y[mm]", "Events");
-		histogram_plot(hGEM1xy, "RDF_hGEM1xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.025, "col", "", "");
+		//histogram_plot(hGEM1x, "acc_RDF_hGEM1x", "x[mm]", "Events");
+		//histogram_plot(hGEM1y, "acc_RDF_hGEM1y", "y[mm]", "Events");
+		histogram_plot(hGEM1xy, "acc_RDF_hGEM1xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.025, "col", "", "");
 		//
-		histogram_plot(hGEM2xy, "RDF_hGEM2xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM2xy, "acc_RDF_hGEM2xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hGEM3xy, "RDF_hGEM3xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM3xy, "acc_RDF_hGEM3xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hGEM4xy, "RDF_hGEM4xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM4xy, "acc_RDF_hGEM4xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM5xy, "RDF_hMM5xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM5xy, "acc_RDF_hMM5xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM6xy, "RDF_hMM6xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM6xy, "acc_RDF_hMM6xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM7xy, "RDF_hMM7xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM7xy, "acc_RDF_hMM7xy", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hV0, "RDF_hV0", "Energy [GeV]", "Events", 1);
+		histogram_plot(hV0, "acc_RDF_hV0", "Energy [GeV]", "Events", 1);
 		//
 		// 
-		histogram_plot(hBeamEnergy0, "RDF_hBeamEnergy0", "Energy [GeV]", "Events", 0);
+		//histogram_plot(hBeamEnergy0, "acc_RDF_hBeamEnergy0", "Energy [GeV]", "Events", 0);
 		//
-		histogram_plot(hECALtot, "RDF_hECALtot", "Energy [GeV]", "Events", 1);
+		histogram_plot(hECALtot, "acc_RDF_hECALtot", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hVHCALtot, "RDF_hVHCALtot", "Energy [GeV]", "Events", 1);
+		histogram_plot(hVHCALtot, "acc_RDF_hVHCALtot", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hHCAL0tot, "RDF_hHCAL0tot", "Energy [GeV]", "Events", 1);
+		histogram_plot(hHCAL0tot, "acc_RDF_hHCAL0tot", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hHCAL1tot, "RDF_hHCAL1tot", "Energy [GeV]", "Events", 1);
+		histogram_plot(hHCAL1tot, "acc_RDF_hHCAL1tot", "Energy [GeV]", "Events", 1);
 		//
 		for (int i = 0; i < n_ECALx; i++) {
 			for (int j = 0; j < n_ECALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hECALenergy[i][j], (TString)"RDF_hECALenergy_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hECALenergy[i][j], (TString)"acc_RDF_hECALenergy_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1340,7 +1340,7 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_VHCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hVHCALenergy[i][j], (TString)"RDF_hVHCALenergy_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hVHCALenergy[i][j], (TString)"acc_RDF_hVHCALenergy_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1348,7 +1348,7 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_HCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hHCAL0energy[i][j], (TString)"RDF_hHCAL0energy_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hHCAL0energy[i][j], (TString)"acc_RDF_hHCAL0energy_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1356,12 +1356,12 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_HCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hHCAL1energy[i][j], (TString)"RDF_hHCAL1energy_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hHCAL1energy[i][j], (TString)"acc_RDF_hHCAL1energy_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
 		//
-		histogram_plot(hS4, "RDF_hS4", "x [mm]", "y [mm]");
+		//histogram_plot(hS4, "acc_RDF_hS4", "x [mm]", "y [mm]");
 
 	}
 	//
@@ -1376,39 +1376,39 @@ void macro_RDataFrame_blocks() {
 	if (bool_S0S1) {
 
 		// Plots
-		//histogram_plot(hMM1x_cut_S0S1, "RDF_hMM1x_cut_S0S1", "x[mm]", "Events");
-		//histogram_plot(hMM1y_cut_S0S1, "RDF_hMM1y_cut_S0S1", "y[mm]", "Events");
-		histogram_plot(hMM1xy_cut_S0S1, "RDF_hMM1xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM1x_cut_S0S1, "acc_RDF_hMM1x_cut_S0S1", "x[mm]", "Events");
+		//histogram_plot(hMM1y_cut_S0S1, "acc_RDF_hMM1y_cut_S0S1", "y[mm]", "Events");
+		histogram_plot(hMM1xy_cut_S0S1, "acc_RDF_hMM1xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		// 
-		//histogram_plot(hMM2x_cut_S0S1, "RDF_hMM2x_cut_S0S1", "x[mm]", "Events");
-		//histogram_plot(hMM2y_cut_S0S1, "RDF_hMM2y_cut_S0S1", "y[mm]", "Events");
-		histogram_plot(hMM2xy_cut_S0S1, "RDF_hMM2xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM2x_cut_S0S1, "acc_RDF_hMM2x_cut_S0S1", "x[mm]", "Events");
+		//histogram_plot(hMM2y_cut_S0S1, "acc_RDF_hMM2y_cut_S0S1", "y[mm]", "Events");
+		histogram_plot(hMM2xy_cut_S0S1, "acc_RDF_hMM2xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hMM3x_cut_S0S1, "RDF_hMM3x_cut_S0S1", "x[mm]", "Events");
-		//histogram_plot(hMM3y_cut_S0S1, "RDF_hMM3y_cut_S0S1", "y[mm]", "Events");
-		histogram_plot(hMM3xy_cut_S0S1, "RDF_hMM3xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM3x_cut_S0S1, "acc_RDF_hMM3x_cut_S0S1", "x[mm]", "Events");
+		//histogram_plot(hMM3y_cut_S0S1, "acc_RDF_hMM3y_cut_S0S1", "y[mm]", "Events");
+		histogram_plot(hMM3xy_cut_S0S1, "acc_RDF_hMM3xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hMM4x_cut_S0S1, "RDF_hMM4x_cut_S0S1", "x[mm]", "Events");
-		//histogram_plot(hMM4y_cut_S0S1, "RDF_hMM4y_cut_S0S1", "y[mm]", "Events");
-		histogram_plot(hMM4xy_cut_S0S1, "RDF_hMM4xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM4x_cut_S0S1, "acc_RDF_hMM4x_cut_S0S1", "x[mm]", "Events");
+		//histogram_plot(hMM4y_cut_S0S1, "acc_RDF_hMM4y_cut_S0S1", "y[mm]", "Events");
+		histogram_plot(hMM4xy_cut_S0S1, "acc_RDF_hMM4xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hGEM1x_cut_S0S1, "RDF_hGEM1x_cut_S0S1", "x[mm]", "Events");
-		//histogram_plot(hGEM1y_cut_S0S1, "RDF_hGEM1y_cut_S0S1", "y[mm]", "Events");
-		histogram_plot(hGEM1xy_cut_S0S1, "RDF_hGEM1xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.025, "col", "", "");
+		//histogram_plot(hGEM1x_cut_S0S1, "acc_RDF_hGEM1x_cut_S0S1", "x[mm]", "Events");
+		//histogram_plot(hGEM1y_cut_S0S1, "acc_RDF_hGEM1y_cut_S0S1", "y[mm]", "Events");
+		histogram_plot(hGEM1xy_cut_S0S1, "acc_RDF_hGEM1xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.025, "col", "", "");
 		//
-		histogram_plot(hGEM2xy_cut_S0S1, "RDF_hGEM2xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM2xy_cut_S0S1, "acc_RDF_hGEM2xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hGEM3xy_cut_S0S1, "RDF_hGEM3xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM3xy_cut_S0S1, "acc_RDF_hGEM3xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hGEM4xy_cut_S0S1, "RDF_hGEM4xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM4xy_cut_S0S1, "acc_RDF_hGEM4xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM5xy_cut_S0S1, "RDF_hMM5xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM5xy_cut_S0S1, "acc_RDF_hMM5xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM6xy_cut_S0S1, "RDF_hMM6xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM6xy_cut_S0S1, "acc_RDF_hMM6xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM7xy_cut_S0S1, "RDF_hMM7xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM7xy_cut_S0S1, "acc_RDF_hMM7xy_cut_S0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hV0_cut_S0S1, "RDF_hV0_cut_S0S1", "Energy [GeV]", "Events", 1);
+		histogram_plot(hV0_cut_S0S1, "acc_RDF_hV0_cut_S0S1", "Energy [GeV]", "Events", 1);
 
 	}
 	//
@@ -1423,54 +1423,54 @@ void macro_RDataFrame_blocks() {
 	if (bool_S0S1antiV0) {
 
 		// Plots
-		//histogram_plot(hMM1x_cut_S0S1antiV0, "RDF_hMM1x_cut_S0S1antiV0", "x[mm]", "Events");
-		//histogram_plot(hMM1y_cut_S0S1antiV0, "RDF_hMM1y_cut_S0S1antiV0", "y[mm]", "Events");
-		histogram_plot(hMM1xy_cut_S0S1antiV0, "RDF_hMM1xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM1x_cut_S0S1antiV0, "acc_RDF_hMM1x_cut_S0S1antiV0", "x[mm]", "Events");
+		//histogram_plot(hMM1y_cut_S0S1antiV0, "acc_RDF_hMM1y_cut_S0S1antiV0", "y[mm]", "Events");
+		histogram_plot(hMM1xy_cut_S0S1antiV0, "acc_RDF_hMM1xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		// 
-		//histogram_plot(hMM2x_cut_S0S1antiV0, "RDF_hMM2x_cut_S0S1antiV0", "x[mm]", "Events");
-		//histogram_plot(hMM2y_cut_S0S1antiV0, "RDF_hMM2y_cut_S0S1antiV0", "y[mm]", "Events");
-		histogram_plot(hMM2xy_cut_S0S1antiV0, "RDF_hMM2xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM2x_cut_S0S1antiV0, "acc_RDF_hMM2x_cut_S0S1antiV0", "x[mm]", "Events");
+		//histogram_plot(hMM2y_cut_S0S1antiV0, "acc_RDF_hMM2y_cut_S0S1antiV0", "y[mm]", "Events");
+		histogram_plot(hMM2xy_cut_S0S1antiV0, "acc_RDF_hMM2xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hMM3x_cut_S0S1antiV0, "RDF_hMM3x_cut_S0S1antiV0", "x[mm]", "Events");
-		//histogram_plot(hMM3y_cut_S0S1antiV0, "RDF_hMM3y_cut_S0S1antiV0", "y[mm]", "Events");
-		histogram_plot(hMM3xy_cut_S0S1antiV0, "RDF_hMM3xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM3x_cut_S0S1antiV0, "acc_RDF_hMM3x_cut_S0S1antiV0", "x[mm]", "Events");
+		//histogram_plot(hMM3y_cut_S0S1antiV0, "acc_RDF_hMM3y_cut_S0S1antiV0", "y[mm]", "Events");
+		histogram_plot(hMM3xy_cut_S0S1antiV0, "acc_RDF_hMM3xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hMM4x_cut_S0S1antiV0, "RDF_hMM4x_cut_S0S1antiV0", "x[mm]", "Events");
-		//histogram_plot(hMM4y_cut_S0S1antiV0, "RDF_hMM4y_cut_S0S1antiV0", "y[mm]", "Events");
-		histogram_plot(hMM4xy_cut_S0S1antiV0, "RDF_hMM4xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM4x_cut_S0S1antiV0, "acc_RDF_hMM4x_cut_S0S1antiV0", "x[mm]", "Events");
+		//histogram_plot(hMM4y_cut_S0S1antiV0, "acc_RDF_hMM4y_cut_S0S1antiV0", "y[mm]", "Events");
+		histogram_plot(hMM4xy_cut_S0S1antiV0, "acc_RDF_hMM4xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hGEM1x_cut_S0S1antiV0, "RDF_hGEM1x_cut_S0S1antiV0", "x[mm]", "Events");
-		//histogram_plot(hGEM1y_cut_S0S1antiV0, "RDF_hGEM1y_cut_S0S1antiV0", "y[mm]", "Events");
-		histogram_plot(hGEM1xy_cut_S0S1antiV0, "RDF_hGEM1xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.025, "col", "", "");
+		//histogram_plot(hGEM1x_cut_S0S1antiV0, "acc_RDF_hGEM1x_cut_S0S1antiV0", "x[mm]", "Events");
+		//histogram_plot(hGEM1y_cut_S0S1antiV0, "acc_RDF_hGEM1y_cut_S0S1antiV0", "y[mm]", "Events");
+		histogram_plot(hGEM1xy_cut_S0S1antiV0, "acc_RDF_hGEM1xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.025, "col", "", "");
 		//
-		histogram_plot(hGEM2xy_cut_S0S1antiV0, "RDF_hGEM2xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM2xy_cut_S0S1antiV0, "acc_RDF_hGEM2xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hGEM3xy_cut_S0S1antiV0, "RDF_hGEM3xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM3xy_cut_S0S1antiV0, "acc_RDF_hGEM3xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hGEM4xy_cut_S0S1antiV0, "RDF_hGEM4xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM4xy_cut_S0S1antiV0, "acc_RDF_hGEM4xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM5xy_cut_S0S1antiV0, "RDF_hMM5xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM5xy_cut_S0S1antiV0, "acc_RDF_hMM5xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM6xy_cut_S0S1antiV0, "RDF_hMM6xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM6xy_cut_S0S1antiV0, "acc_RDF_hMM6xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM7xy_cut_S0S1antiV0, "RDF_hMM7xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM7xy_cut_S0S1antiV0, "acc_RDF_hMM7xy_cut_S0S1antiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hV0_cut_S0S1antiV0, "RDF_hV0_cut_S0S1antiV0", "Energy [GeV]", "Events", 1);
+		histogram_plot(hV0_cut_S0S1antiV0, "acc_RDF_hV0_cut_S0S1antiV0", "Energy [GeV]", "Events", 1);
 		//
 		//
-		histogram_plot(hECALtot_cut_S0S1antiV0, "RDF_hECALtot_cut_S0S1antiV0", "Energy [GeV]", "Events", 1);
+		histogram_plot(hECALtot_cut_S0S1antiV0, "acc_RDF_hECALtot_cut_S0S1antiV0", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hVHCALtot_cut_S0S1antiV0, "RDF_hVHCALtot_cut_S0S1antiV0", "Energy [GeV]", "Events", 1);
+		histogram_plot(hVHCALtot_cut_S0S1antiV0, "acc_RDF_hVHCALtot_cut_S0S1antiV0", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hHCAL0tot_cut_S0S1antiV0, "RDF_hHCAL0tot_cut_S0S1antiV0", "Energy [GeV]", "Events", 1);
+		histogram_plot(hHCAL0tot_cut_S0S1antiV0, "acc_RDF_hHCAL0tot_cut_S0S1antiV0", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hHCAL1tot_cut_S0S1antiV0, "RDF_hHCAL1tot_cut_S0S1antiV0", "Energy [GeV]", "Events", 1);
+		histogram_plot(hHCAL1tot_cut_S0S1antiV0, "acc_RDF_hHCAL1tot_cut_S0S1antiV0", "Energy [GeV]", "Events", 1);
 		//
 		for (int i = 0; i < n_ECALx; i++) {
 			for (int j = 0; j < n_ECALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hECALenergy_cut_S0S1antiV0[i][j], (TString)"RDF_hECALenergy_cut_S0S1antiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hECALenergy_cut_S0S1antiV0[i][j], (TString)"acc_RDF_hECALenergy_cut_S0S1antiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1478,7 +1478,7 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_VHCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hVHCALenergy_cut_S0S1antiV0[i][j], (TString)"RDF_hVHCALenergy_cut_S0S1antiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hVHCALenergy_cut_S0S1antiV0[i][j], (TString)"acc_RDF_hVHCALenergy_cut_S0S1antiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1486,7 +1486,7 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_HCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hHCAL0energy_cut_S0S1antiV0[i][j], (TString)"RDF_hHCAL0energy_cut_S0S1antiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hHCAL0energy_cut_S0S1antiV0[i][j], (TString)"acc_RDF_hHCAL0energy_cut_S0S1antiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1494,7 +1494,7 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_HCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hHCAL1energy_cut_S0S1antiV0[i][j], (TString)"RDF_hHCAL1energy_cut_S0S1antiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hHCAL1energy_cut_S0S1antiV0[i][j], (TString)"acc_RDF_hHCAL1energy_cut_S0S1antiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 
@@ -1511,54 +1511,54 @@ void macro_RDataFrame_blocks() {
 	if (bool_antiS0S1) {
 
 		// Plots
-		//histogram_plot(hMM1x_cut_antiS0S1, "RDF_hMM1x_cut_antiS0S1", "x[mm]", "Events");
-		//histogram_plot(hMM1y_cut_antiS0S1, "RDF_hMM1y_cut_antiS0S1", "y[mm]", "Events");
-		histogram_plot(hMM1xy_cut_antiS0S1, "RDF_hMM1xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM1x_cut_antiS0S1, "acc_RDF_hMM1x_cut_antiS0S1", "x[mm]", "Events");
+		//histogram_plot(hMM1y_cut_antiS0S1, "acc_RDF_hMM1y_cut_antiS0S1", "y[mm]", "Events");
+		histogram_plot(hMM1xy_cut_antiS0S1, "acc_RDF_hMM1xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		// 
-		//histogram_plot(hMM2x_cut_antiS0S1, "RDF_hMM2x_cut_antiS0S1", "x[mm]", "Events");
-		//histogram_plot(hMM2y_cut_antiS0S1, "RDF_hMM2y_cut_antiS0S1", "y[mm]", "Events");
-		histogram_plot(hMM2xy_cut_antiS0S1, "RDF_hMM2xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM2x_cut_antiS0S1, "acc_RDF_hMM2x_cut_antiS0S1", "x[mm]", "Events");
+		//histogram_plot(hMM2y_cut_antiS0S1, "acc_RDF_hMM2y_cut_antiS0S1", "y[mm]", "Events");
+		histogram_plot(hMM2xy_cut_antiS0S1, "acc_RDF_hMM2xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hMM3x_cut_antiS0S1, "RDF_hMM3x_cut_antiS0S1", "x[mm]", "Events");
-		//histogram_plot(hMM3y_cut_antiS0S1, "RDF_hMM3y_cut_antiS0S1", "y[mm]", "Events");
-		histogram_plot(hMM3xy_cut_antiS0S1, "RDF_hMM3xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM3x_cut_antiS0S1, "acc_RDF_hMM3x_cut_antiS0S1", "x[mm]", "Events");
+		//histogram_plot(hMM3y_cut_antiS0S1, "acc_RDF_hMM3y_cut_antiS0S1", "y[mm]", "Events");
+		histogram_plot(hMM3xy_cut_antiS0S1, "acc_RDF_hMM3xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hMM4x_cut_antiS0S1, "RDF_hMM4x_cut_antiS0S1", "x[mm]", "Events");
-		//histogram_plot(hMM4y_cut_antiS0S1, "RDF_hMM4y_cut_antiS0S1", "y[mm]", "Events");
-		histogram_plot(hMM4xy_cut_antiS0S1, "RDF_hMM4xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM4x_cut_antiS0S1, "acc_RDF_hMM4x_cut_antiS0S1", "x[mm]", "Events");
+		//histogram_plot(hMM4y_cut_antiS0S1, "acc_RDF_hMM4y_cut_antiS0S1", "y[mm]", "Events");
+		histogram_plot(hMM4xy_cut_antiS0S1, "acc_RDF_hMM4xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hGEM1x_cut_antiS0S1, "RDF_hGEM1x_cut_antiS0S1", "x[mm]", "Events");
-		//histogram_plot(hGEM1y_cut_antiS0S1, "RDF_hGEM1y_cut_antiS0S1", "y[mm]", "Events");
-		histogram_plot(hGEM1xy_cut_antiS0S1, "RDF_hGEM1xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.025, "col", "", "");
+		//histogram_plot(hGEM1x_cut_antiS0S1, "acc_RDF_hGEM1x_cut_antiS0S1", "x[mm]", "Events");
+		//histogram_plot(hGEM1y_cut_antiS0S1, "acc_RDF_hGEM1y_cut_antiS0S1", "y[mm]", "Events");
+		histogram_plot(hGEM1xy_cut_antiS0S1, "acc_RDF_hGEM1xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.025, "col", "", "");
 		//
-		histogram_plot(hGEM2xy_cut_antiS0S1, "RDF_hGEM2xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM2xy_cut_antiS0S1, "acc_RDF_hGEM2xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hGEM3xy_cut_antiS0S1, "RDF_hGEM3xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM3xy_cut_antiS0S1, "acc_RDF_hGEM3xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hGEM4xy_cut_antiS0S1, "RDF_hGEM4xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM4xy_cut_antiS0S1, "acc_RDF_hGEM4xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM5xy_cut_antiS0S1, "RDF_hMM5xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM5xy_cut_antiS0S1, "acc_RDF_hMM5xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM6xy_cut_antiS0S1, "RDF_hMM6xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM6xy_cut_antiS0S1, "acc_RDF_hMM6xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM7xy_cut_antiS0S1, "RDF_hMM7xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM7xy_cut_antiS0S1, "acc_RDF_hMM7xy_cut_antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hV0_cut_antiS0S1, "RDF_hV0_cut_antiS0S1", "Energy [GeV]", "Events", 1);
+		histogram_plot(hV0_cut_antiS0S1, "acc_RDF_hV0_cut_antiS0S1", "Energy [GeV]", "Events", 1);
 		//
 		//
-		histogram_plot(hECALtot_cut_antiS0S1, "RDF_hECALtot_cut_antiS0S1", "Energy [GeV]", "Events", 1);
+		histogram_plot(hECALtot_cut_antiS0S1, "acc_RDF_hECALtot_cut_antiS0S1", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hVHCALtot_cut_antiS0S1, "RDF_hVHCALtot_cut_antiS0S1", "Energy [GeV]", "Events", 1);
+		histogram_plot(hVHCALtot_cut_antiS0S1, "acc_RDF_hVHCALtot_cut_antiS0S1", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hHCAL0tot_cut_antiS0S1, "RDF_hHCAL0tot_cut_antiS0S1", "Energy [GeV]", "Events", 1);
+		histogram_plot(hHCAL0tot_cut_antiS0S1, "acc_RDF_hHCAL0tot_cut_antiS0S1", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hHCAL1tot_cut_antiS0S1, "RDF_hHCAL1tot_cut_antiS0S1", "Energy [GeV]", "Events", 1);
+		histogram_plot(hHCAL1tot_cut_antiS0S1, "acc_RDF_hHCAL1tot_cut_antiS0S1", "Energy [GeV]", "Events", 1);
 		//
 		for (int i = 0; i < n_ECALx; i++) {
 			for (int j = 0; j < n_ECALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hECALenergy_cut_antiS0S1[i][j], (TString)"RDF_hECALenergy_cut_antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hECALenergy_cut_antiS0S1[i][j], (TString)"acc_RDF_hECALenergy_cut_antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1566,7 +1566,7 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_VHCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hVHCALenergy_cut_antiS0S1[i][j], (TString)"RDF_hVHCALenergy_cut_antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hVHCALenergy_cut_antiS0S1[i][j], (TString)"acc_RDF_hVHCALenergy_cut_antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1574,7 +1574,7 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_HCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hHCAL0energy_cut_antiS0S1[i][j], (TString)"RDF_hHCAL0energy_cut_antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hHCAL0energy_cut_antiS0S1[i][j], (TString)"acc_RDF_hHCAL0energy_cut_antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1582,7 +1582,7 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_HCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hHCAL1energy_cut_antiS0S1[i][j], (TString)"RDF_hHCAL1energy_cut_antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hHCAL1energy_cut_antiS0S1[i][j], (TString)"acc_RDF_hHCAL1energy_cut_antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 
@@ -1599,9 +1599,9 @@ void macro_RDataFrame_blocks() {
 	if (bool_S0S1V0) {
 
 		// Plots
-		histogram_plot(hGEM1xy_cut_S0S1V0, "RDF_hGEM1xy_cut_S0S1V0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.025, "col", "", "");
+		histogram_plot(hGEM1xy_cut_S0S1V0, "acc_RDF_hGEM1xy_cut_S0S1V0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.025, "col", "", "");
 		//
-		histogram_plot(hV0_cut_S0S1V0, "RDF_hV0_cut_S0S1V0", "Energy [GeV]", "Events", 1);
+		histogram_plot(hV0_cut_S0S1V0, "acc_RDF_hV0_cut_S0S1V0", "Energy [GeV]", "Events", 1);
 
 	}
 	//
@@ -1616,54 +1616,54 @@ void macro_RDataFrame_blocks() {
 	if (bool_S0S1S4SmuantiV0) {
 
 		// Plots
-		//histogram_plot(hMM1x_cut_S0S1S4SmuantiV0, "RDF_hMM1x_cut_S0S1S4SmuantiV0", "x[mm]", "Events");
-		//histogram_plot(hMM1y_cut_S0S1S4SmuantiV0, "RDF_hMM1y_cut_S0S1S4SmuantiV0", "y[mm]", "Events");
-		histogram_plot(hMM1xy_cut_S0S1S4SmuantiV0, "RDF_hMM1xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM1x_cut_S0S1S4SmuantiV0, "acc_RDF_hMM1x_cut_S0S1S4SmuantiV0", "x[mm]", "Events");
+		//histogram_plot(hMM1y_cut_S0S1S4SmuantiV0, "acc_RDF_hMM1y_cut_S0S1S4SmuantiV0", "y[mm]", "Events");
+		histogram_plot(hMM1xy_cut_S0S1S4SmuantiV0, "acc_RDF_hMM1xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		// 
-		//histogram_plot(hMM2x_cut_S0S1S4SmuantiV0, "RDF_hMM2x_cut_S0S1S4SmuantiV0", "x[mm]", "Events");
-		//histogram_plot(hMM2y_cut_S0S1S4SmuantiV0, "RDF_hMM2y_cut_S0S1S4SmuantiV0", "y[mm]", "Events");
-		histogram_plot(hMM2xy_cut_S0S1S4SmuantiV0, "RDF_hMM2xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM2x_cut_S0S1S4SmuantiV0, "acc_RDF_hMM2x_cut_S0S1S4SmuantiV0", "x[mm]", "Events");
+		//histogram_plot(hMM2y_cut_S0S1S4SmuantiV0, "acc_RDF_hMM2y_cut_S0S1S4SmuantiV0", "y[mm]", "Events");
+		histogram_plot(hMM2xy_cut_S0S1S4SmuantiV0, "acc_RDF_hMM2xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hMM3x_cut_S0S1S4SmuantiV0, "RDF_hMM3x_cut_S0S1S4SmuantiV0", "x[mm]", "Events");
-		//histogram_plot(hMM3y_cut_S0S1S4SmuantiV0, "RDF_hMM3y_cut_S0S1S4SmuantiV0", "y[mm]", "Events");
-		histogram_plot(hMM3xy_cut_S0S1S4SmuantiV0, "RDF_hMM3xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM3x_cut_S0S1S4SmuantiV0, "acc_RDF_hMM3x_cut_S0S1S4SmuantiV0", "x[mm]", "Events");
+		//histogram_plot(hMM3y_cut_S0S1S4SmuantiV0, "acc_RDF_hMM3y_cut_S0S1S4SmuantiV0", "y[mm]", "Events");
+		histogram_plot(hMM3xy_cut_S0S1S4SmuantiV0, "acc_RDF_hMM3xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hMM4x_cut_S0S1S4SmuantiV0, "RDF_hMM4x_cut_S0S1S4SmuantiV0", "x[mm]", "Events");
-		//histogram_plot(hMM4y_cut_S0S1S4SmuantiV0, "RDF_hMM4y_cut_S0S1S4SmuantiV0", "y[mm]", "Events");
-		histogram_plot(hMM4xy_cut_S0S1S4SmuantiV0, "RDF_hMM4xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM4x_cut_S0S1S4SmuantiV0, "acc_RDF_hMM4x_cut_S0S1S4SmuantiV0", "x[mm]", "Events");
+		//histogram_plot(hMM4y_cut_S0S1S4SmuantiV0, "acc_RDF_hMM4y_cut_S0S1S4SmuantiV0", "y[mm]", "Events");
+		histogram_plot(hMM4xy_cut_S0S1S4SmuantiV0, "acc_RDF_hMM4xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hGEM1x_cut_S0S1S4SmuantiV0, "RDF_hGEM1x_cut_S0S1S4SmuantiV0", "x[mm]", "Events");
-		//histogram_plot(hGEM1y_cut_S0S1S4SmuantiV0, "RDF_hGEM1y_cut_S0S1S4SmuantiV0", "y[mm]", "Events");
-		histogram_plot(hGEM1xy_cut_S0S1S4SmuantiV0, "RDF_hGEM1xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.025, "col", "", "");
+		//histogram_plot(hGEM1x_cut_S0S1S4SmuantiV0, "acc_RDF_hGEM1x_cut_S0S1S4SmuantiV0", "x[mm]", "Events");
+		//histogram_plot(hGEM1y_cut_S0S1S4SmuantiV0, "acc_RDF_hGEM1y_cut_S0S1S4SmuantiV0", "y[mm]", "Events");
+		histogram_plot(hGEM1xy_cut_S0S1S4SmuantiV0, "acc_RDF_hGEM1xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.025, "col", "", "");
 		//
-		histogram_plot(hGEM2xy_cut_S0S1S4SmuantiV0, "RDF_hGEM2xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM2xy_cut_S0S1S4SmuantiV0, "acc_RDF_hGEM2xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hGEM3xy_cut_S0S1S4SmuantiV0, "RDF_hGEM3xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM3xy_cut_S0S1S4SmuantiV0, "acc_RDF_hGEM3xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hGEM4xy_cut_S0S1S4SmuantiV0, "RDF_hGEM4xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM4xy_cut_S0S1S4SmuantiV0, "acc_RDF_hGEM4xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM5xy_cut_S0S1S4SmuantiV0, "RDF_hMM5xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM5xy_cut_S0S1S4SmuantiV0, "acc_RDF_hMM5xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM6xy_cut_S0S1S4SmuantiV0, "RDF_hMM6xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM6xy_cut_S0S1S4SmuantiV0, "acc_RDF_hMM6xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM7xy_cut_S0S1S4SmuantiV0, "RDF_hMM7xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM7xy_cut_S0S1S4SmuantiV0, "acc_RDF_hMM7xy_cut_S0S1S4SmuantiV0", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hV0_cut_S0S1S4SmuantiV0, "RDF_hV0_cut_S0S1S4SmuantiV0", "Energy [GeV]", "Events", 1);
+		histogram_plot(hV0_cut_S0S1S4SmuantiV0, "acc_RDF_hV0_cut_S0S1S4SmuantiV0", "Energy [GeV]", "Events", 1);
 		//
 		//
-		histogram_plot(hECALtot_cut_S0S1S4SmuantiV0, "RDF_hECALtot_cut_S0S1S4SmuantiV0", "Energy [GeV]", "Events", 1);
+		histogram_plot(hECALtot_cut_S0S1S4SmuantiV0, "acc_RDF_hECALtot_cut_S0S1S4SmuantiV0", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hVHCALtot_cut_S0S1S4SmuantiV0, "RDF_hVHCALtot_cut_S0S1S4SmuantiV0", "Energy [GeV]", "Events", 1);
+		histogram_plot(hVHCALtot_cut_S0S1S4SmuantiV0, "acc_RDF_hVHCALtot_cut_S0S1S4SmuantiV0", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hHCAL0tot_cut_S0S1S4SmuantiV0, "RDF_hHCAL0tot_cut_S0S1S4SmuantiV0", "Energy [GeV]", "Events", 1);
+		histogram_plot(hHCAL0tot_cut_S0S1S4SmuantiV0, "acc_RDF_hHCAL0tot_cut_S0S1S4SmuantiV0", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hHCAL1tot_cut_S0S1S4SmuantiV0, "RDF_hHCAL1tot_cut_S0S1S4SmuantiV0", "Energy [GeV]", "Events", 1);
+		histogram_plot(hHCAL1tot_cut_S0S1S4SmuantiV0, "acc_RDF_hHCAL1tot_cut_S0S1S4SmuantiV0", "Energy [GeV]", "Events", 1);
 		//
 		for (int i = 0; i < n_ECALx; i++) {
 			for (int j = 0; j < n_ECALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hECALenergy_cut_S0S1S4SmuantiV0[i][j], (TString)"RDF_hECALenergy_cut_S0S1S4SmuantiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hECALenergy_cut_S0S1S4SmuantiV0[i][j], (TString)"acc_RDF_hECALenergy_cut_S0S1S4SmuantiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1671,7 +1671,7 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_VHCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hVHCALenergy_cut_S0S1S4SmuantiV0[i][j], (TString)"RDF_hVHCALenergy_cut_S0S1S4SmuantiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hVHCALenergy_cut_S0S1S4SmuantiV0[i][j], (TString)"acc_RDF_hVHCALenergy_cut_S0S1S4SmuantiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1679,7 +1679,7 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_HCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hHCAL0energy_cut_S0S1S4SmuantiV0[i][j], (TString)"RDF_hHCAL0energy_cut_S0S1S4SmuantiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hHCAL0energy_cut_S0S1S4SmuantiV0[i][j], (TString)"acc_RDF_hHCAL0energy_cut_S0S1S4SmuantiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1687,7 +1687,7 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_HCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hHCAL1energy_cut_S0S1S4SmuantiV0[i][j], (TString)"RDF_hHCAL1energy_cut_S0S1S4SmuantiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hHCAL1energy_cut_S0S1S4SmuantiV0[i][j], (TString)"acc_RDF_hHCAL1energy_cut_S0S1S4SmuantiV0_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 
@@ -1704,54 +1704,54 @@ void macro_RDataFrame_blocks() {
 	if (bool_S4antiS0S1) {
 
 		// Plots
-		//histogram_plot(hMM1x_cut_S4antiS0S1, "RDF_hMM1x_cut_S4antiS0S1", "x[mm]", "Events");
-		//histogram_plot(hMM1y_cut_S4antiS0S1, "RDF_hMM1y_cut_S4antiS0S1", "y[mm]", "Events");
-		histogram_plot(hMM1xy_cut_S4antiS0S1, "RDF_hMM1xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM1x_cut_S4antiS0S1, "acc_RDF_hMM1x_cut_S4antiS0S1", "x[mm]", "Events");
+		//histogram_plot(hMM1y_cut_S4antiS0S1, "acc_RDF_hMM1y_cut_S4antiS0S1", "y[mm]", "Events");
+		histogram_plot(hMM1xy_cut_S4antiS0S1, "acc_RDF_hMM1xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		// 
-		//histogram_plot(hMM2x_cut_S4antiS0S1, "RDF_hMM2x_cut_S4antiS0S1", "x[mm]", "Events");
-		//histogram_plot(hMM2y_cut_S4antiS0S1, "RDF_hMM2y_cut_S4antiS0S1", "y[mm]", "Events");
-		histogram_plot(hMM2xy_cut_S4antiS0S1, "RDF_hMM2xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM2x_cut_S4antiS0S1, "acc_RDF_hMM2x_cut_S4antiS0S1", "x[mm]", "Events");
+		//histogram_plot(hMM2y_cut_S4antiS0S1, "acc_RDF_hMM2y_cut_S4antiS0S1", "y[mm]", "Events");
+		histogram_plot(hMM2xy_cut_S4antiS0S1, "acc_RDF_hMM2xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hMM3x_cut_S4antiS0S1, "RDF_hMM3x_cut_S4antiS0S1", "x[mm]", "Events");
-		//histogram_plot(hMM3y_cut_S4antiS0S1, "RDF_hMM3y_cut_S4antiS0S1", "y[mm]", "Events");
-		histogram_plot(hMM3xy_cut_S4antiS0S1, "RDF_hMM3xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM3x_cut_S4antiS0S1, "acc_RDF_hMM3x_cut_S4antiS0S1", "x[mm]", "Events");
+		//histogram_plot(hMM3y_cut_S4antiS0S1, "acc_RDF_hMM3y_cut_S4antiS0S1", "y[mm]", "Events");
+		histogram_plot(hMM3xy_cut_S4antiS0S1, "acc_RDF_hMM3xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hMM4x_cut_S4antiS0S1, "RDF_hMM4x_cut_S4antiS0S1", "x[mm]", "Events");
-		//histogram_plot(hMM4y_cut_S4antiS0S1, "RDF_hMM4y_cut_S4antiS0S1", "y[mm]", "Events");
-		histogram_plot(hMM4xy_cut_S4antiS0S1, "RDF_hMM4xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		//histogram_plot(hMM4x_cut_S4antiS0S1, "acc_RDF_hMM4x_cut_S4antiS0S1", "x[mm]", "Events");
+		//histogram_plot(hMM4y_cut_S4antiS0S1, "acc_RDF_hMM4y_cut_S4antiS0S1", "y[mm]", "Events");
+		histogram_plot(hMM4xy_cut_S4antiS0S1, "acc_RDF_hMM4xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		//histogram_plot(hGEM1x_cut_S4antiS0S1, "RDF_hGEM1x_cut_S4antiS0S1", "x[mm]", "Events");
-		//histogram_plot(hGEM1y_cut_S4antiS0S1, "RDF_hGEM1y_cut_S4antiS0S1", "y[mm]", "Events");
-		histogram_plot(hGEM1xy_cut_S4antiS0S1, "RDF_hGEM1xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.025, "col", "", "");
+		//histogram_plot(hGEM1x_cut_S4antiS0S1, "acc_RDF_hGEM1x_cut_S4antiS0S1", "x[mm]", "Events");
+		//histogram_plot(hGEM1y_cut_S4antiS0S1, "acc_RDF_hGEM1y_cut_S4antiS0S1", "y[mm]", "Events");
+		histogram_plot(hGEM1xy_cut_S4antiS0S1, "acc_RDF_hGEM1xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.025, "col", "", "");
 		//
-		histogram_plot(hGEM2xy_cut_S4antiS0S1, "RDF_hGEM2xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM2xy_cut_S4antiS0S1, "acc_RDF_hGEM2xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hGEM3xy_cut_S4antiS0S1, "RDF_hGEM3xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM3xy_cut_S4antiS0S1, "acc_RDF_hGEM3xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hGEM4xy_cut_S4antiS0S1, "RDF_hGEM4xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hGEM4xy_cut_S4antiS0S1, "acc_RDF_hGEM4xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM5xy_cut_S4antiS0S1, "RDF_hMM5xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM5xy_cut_S4antiS0S1, "acc_RDF_hMM5xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM6xy_cut_S4antiS0S1, "RDF_hMM6xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM6xy_cut_S4antiS0S1, "acc_RDF_hMM6xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hMM7xy_cut_S4antiS0S1, "RDF_hMM7xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
+		histogram_plot(hMM7xy_cut_S4antiS0S1, "acc_RDF_hMM7xy_cut_S4antiS0S1", "x [mm]", "y [mm]", 0, 2, 1, 1.47, 0.04, 0.04, "col", "", "");
 		//
-		histogram_plot(hV0_cut_S4antiS0S1, "RDF_hV0_cut_S4antiS0S1", "Energy [GeV]", "Events", 1);
+		histogram_plot(hV0_cut_S4antiS0S1, "acc_RDF_hV0_cut_S4antiS0S1", "Energy [GeV]", "Events", 1);
 		//
 		//
-		histogram_plot(hECALtot_cut_S4antiS0S1, "RDF_hECALtot_cut_S4antiS0S1", "Energy [GeV]", "Events", 1);
+		histogram_plot(hECALtot_cut_S4antiS0S1, "acc_RDF_hECALtot_cut_S4antiS0S1", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hVHCALtot_cut_S4antiS0S1, "RDF_hVHCALtot_cut_S4antiS0S1", "Energy [GeV]", "Events", 1);
+		histogram_plot(hVHCALtot_cut_S4antiS0S1, "acc_RDF_hVHCALtot_cut_S4antiS0S1", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hHCAL0tot_cut_S4antiS0S1, "RDF_hHCAL0tot_cut_S4antiS0S1", "Energy [GeV]", "Events", 1);
+		histogram_plot(hHCAL0tot_cut_S4antiS0S1, "acc_RDF_hHCAL0tot_cut_S4antiS0S1", "Energy [GeV]", "Events", 1);
 		//
-		histogram_plot(hHCAL1tot_cut_S4antiS0S1, "RDF_hHCAL1tot_cut_S4antiS0S1", "Energy [GeV]", "Events", 1);
+		histogram_plot(hHCAL1tot_cut_S4antiS0S1, "acc_RDF_hHCAL1tot_cut_S4antiS0S1", "Energy [GeV]", "Events", 1);
 		//
 		for (int i = 0; i < n_ECALx; i++) {
 			for (int j = 0; j < n_ECALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hECALenergy_cut_S4antiS0S1[i][j], (TString)"RDF_hECALenergy_cut_S4antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hECALenergy_cut_S4antiS0S1[i][j], (TString)"acc_RDF_hECALenergy_cut_S4antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1759,7 +1759,7 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_VHCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hVHCALenergy_cut_S4antiS0S1[i][j], (TString)"RDF_hVHCALenergy_cut_S4antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hVHCALenergy_cut_S4antiS0S1[i][j], (TString)"acc_RDF_hVHCALenergy_cut_S4antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1767,7 +1767,7 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_HCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hHCAL0energy_cut_S4antiS0S1[i][j], (TString)"RDF_hHCAL0energy_cut_S4antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hHCAL0energy_cut_S4antiS0S1[i][j], (TString)"acc_RDF_hHCAL0energy_cut_S4antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 		//
@@ -1775,7 +1775,7 @@ void macro_RDataFrame_blocks() {
 			for (int j = 0; j < n_HCALy; j++) {
 				TString i_str = (TString)to_string(i);
 				TString j_str = (TString)to_string(j);
-				histogram_plot(hHCAL1energy_cut_S4antiS0S1[i][j], (TString)"RDF_hHCAL1energy_cut_S4antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+				histogram_plot(hHCAL1energy_cut_S4antiS0S1[i][j], (TString)"acc_RDF_hHCAL1energy_cut_S4antiS0S1_" + i_str + j_str, "Energy [GeV]", "Events", 1);
 			};
 		};
 
@@ -1800,7 +1800,7 @@ void macro_RDataFrame_blocks() {
 	if (bool_tests) {
 
 		// Plots
-		histogram_plot(hHCAL1tot_HighEnergy, "RDF_hHCAL1tot_HighEnergy", "Energy [GeV]", "Events", 1);
+		//histogram_plot(hHCAL1tot_HighEnergy, "acc_RDF_hHCAL1tot_HighEnergy", "Energy [GeV]", "Events", 1);
 
 	}
 

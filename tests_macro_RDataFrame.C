@@ -43,52 +43,135 @@ void tests_macro_RDataFrame() {
 
 	// Definition of the data frame
 	ROOT::EnableImplicitMT(); // Tell ROOT you want to go parallel
-	ROOT::RDataFrame d("ana_tree", "../Reco_2305_160gev_V1.7.root"); // Interface to TTree and TChain
-
-	//ROOT::RDataFrame d0("ana_tree", "Reco_2305_160gev_V1.7.root");
+	ROOT::RDataFrame d0("accidentals_tree", "../Reco_2305_160gev_V1.7_accidentals.root"); // Interface to TTree and TChain
 	//auto d = d0.Range(0, 1000000);
+
+
+	// General set up
+	// 
+	//
+	// Binning
+	const int nbins = 120;
+	//
+	// Histogram limits
+	double xlow_MM5 = -174 - 10;
+	double xup_MM5 = 79 + 10;
+	double ylow_MM5 = -1681 - 96;
+	double yup_MM5 = -1600 + 96;
+	//
+	double xlow_MM6 = -184 - 10;
+	double xup_MM6 = 69 + 10;
+	double ylow_MM6 = -1686 - 96;
+	double yup_MM6 = -1605 + 96;
+	//
+	double xlow_MM7 = -197 - 10;
+	double xup_MM7 = 56 + 10;
+	double ylow_MM7 = -1701 - 96;
+	double yup_MM7 = -1620 + 96;
+	//
+	double low_cals = -1e-6;
+	double up_cals = 20;
+	//
+	// Calorimeter cells
+	int n_ECALx = 5;
+	int n_ECALy = 6;
+	//
+	int n_VHCALx = 4;
+	int n_VHCALy = 4;
+	//
+	int n_HCALx = 6;
+	int n_HCALy = 3;
+	//
+	// Definition of new columns in the dataframe
+	auto d = d0.Define("S0", "Triggers[0]").Define("S1", "Triggers[1]").Define("S4", "Triggers[2]").Define("Smu", "Triggers[3]").Define("V0", "Triggers[4]");
+	//
+	for (int i = 0; i < n_HCALx; i++) {
+		for (int j = 0; j < n_HCALy; j++) {
+			int k = i + (j * n_HCALx);
+			TString k_str = (TString)to_string(k);
+			TString i_str = (TString)to_string(i);
+			TString j_str = (TString)to_string(j);
+			TString str = (TString)"HCAL0energy_" + i_str + j_str;
+			TString temp_str = (TString)"HCALenergy[" + k_str + "]";
+			string_view col_str = (string_view)temp_str;
+			d = d.Define(str, col_str);
+		};
+	};
+	//
+	for (int i = 0; i < n_HCALx; i++) {
+		for (int j = 0; j < n_HCALy; j++) {
+			int k = i + (j * n_HCALx) + n_HCALx * n_HCALy;
+			TString k_str = (TString)to_string(k);
+			TString i_str = (TString)to_string(i);
+			TString j_str = (TString)to_string(j);
+			TString str = (TString)"HCAL1energy_" + i_str + j_str;
+			TString temp_str = (TString)"HCALenergy[" + k_str + "]";
+			string_view col_str = (string_view)temp_str;
+			d = d.Define(str, col_str);
+		};
+	};
+
+	// Functions for the cut conditions
+	auto cut_S0 = [](ROOT::VecOps::RVec<double>& col) { return col.at(0) > 0.15e-3; };
+	auto cut_S1 = [](ROOT::VecOps::RVec<double>& col) { return col.at(1) > 0.15e-3; };
+	// auto cutGEM = [](ROOT::VecOps::RVec<double>& col) { return !col.empty(); }; not necessary
+	auto cut_S4 = [](ROOT::VecOps::RVec<double>& col) { return col.at(2) > 0.00135; };
+	auto cut_Smu = [](ROOT::VecOps::RVec<double>& col) { return col.at(3) > 0.00135; };
+	auto cut_V0 = [](ROOT::VecOps::RVec<double>& col) { return col.at(4) > 0; };
+	//
+	auto cut_antiS0 = [](ROOT::VecOps::RVec<double>& col) { return col.at(0) <= 0.15e-3; };
+	auto cut_antiS1 = [](ROOT::VecOps::RVec<double>& col) { return col.at(1) <= 0.15e-3; };
+	auto cut_antiV0 = [](ROOT::VecOps::RVec<double>& col) { return col.at(4) <= 1.3e-3; };
 
 	// Count of the total entries
 	auto totentries = d.Count();
 
 
+	auto f_S0S1S4SmuantiV0 = d.Filter(cut_S0, { "Triggers" }).Filter(cut_S1, { "Triggers" }).Filter(cut_S4, { "Triggers" }).Filter(cut_Smu, { "Triggers" }).Filter(cut_antiV0, { "Triggers" });
 
-	// Binning
-	const int nbins = 400;
+	auto hHCAL0tot_acc_trigger3_test = f_S0S1S4SmuantiV0.Histo1D({ "Name_hHCAL0tot_acc_trigger3_test","Title_hHCAL0tot_acc_trigger3_test",nbins,-1e-6,20 }, "HCAL0tot");
+	ROOT::RDF::RResultPtr<TH1D> hHCAL0energy[n_HCALx][n_HCALy];
+	ROOT::RDF::RResultPtr<TH1D> hHCAL1energy[n_HCALx][n_HCALy];
+	for (int i = 0; i < n_HCALx; i++) {
+		for (int j = 0; j < n_HCALy; j++) {
+			int k = i + (j * n_HCALx);
+			TString k_str = (TString)to_string(k);
+			TString i_str = (TString)to_string(i);
+			TString j_str = (TString)to_string(j);
+			TString str = (TString)"HCAL0energy_" + i_str + j_str;
+			TString col = (TString)"HCAL0energy_" + i_str + j_str;
+			hHCAL0energy[i][j] = f_S0S1S4SmuantiV0.Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, low_cals, up_cals }, col);
+		};
+	};
+	for (int i = 0; i < n_HCALx; i++) {
+		for (int j = 0; j < n_HCALy; j++) {
+			int k = i + (j * n_HCALx);
+			TString k_str = (TString)to_string(k);
+			TString i_str = (TString)to_string(i);
+			TString j_str = (TString)to_string(j);
+			TString str = (TString)"HCAL1energy_" + i_str + j_str;
+			TString col = (TString)"HCAL1energy_" + i_str + j_str;
+			hHCAL1energy[i][j] = f_S0S1S4SmuantiV0.Histo1D({ (TString)"Name_h" + str ,"Title_h" + str , nbins, low_cals, up_cals }, col);
+		};
+	};
 
-	// Calorimeter cells
-	int n_ECALx = 5;
-	int n_ECALy = 6;
+	histogram_plot(hHCAL0tot_acc_trigger3_test, "acc_hHCAL0tot_trigger3_test", "Energy [GeV]", "Events", 1);
+	for (int i = 0; i < n_HCALx; i++) {
+		for (int j = 0; j < n_HCALy; j++) {
+			TString i_str = (TString)to_string(i);
+			TString j_str = (TString)to_string(j);
+			histogram_plot(hHCAL0energy[i][j], (TString)"acc_hHCAL0energy_trigger3_test_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+		};
+	};
+	//
+	for (int i = 0; i < n_HCALx; i++) {
+		for (int j = 0; j < n_HCALy; j++) {
+			TString i_str = (TString)to_string(i);
+			TString j_str = (TString)to_string(j);
+			histogram_plot(hHCAL1energy[i][j], (TString)"acc_hHCAL1energy_trigger3_test_" + i_str + j_str, "Energy [GeV]", "Events", 1);
+		};
+	};
 
-
-	time_t t0_take = time(0);
-	auto ECALtot_vec = *d.Take<double, ROOT::VecOps::RVec<double>>("ECALtot");
-	auto HCAL0tot_vec = *d.Take<double, ROOT::VecOps::RVec<double>>("HCAL0tot");
-	auto HCAL1tot_vec = *d.Take<double, ROOT::VecOps::RVec<double>>("HCAL1tot");
-	auto GEM1x_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("GEM1x");
-	auto GEM1y_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("GEM1y");
-	auto GEM2x_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("GEM2x");
-	auto GEM2y_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("GEM2y");
-	auto GEM3x_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("GEM3x");
-	auto GEM3y_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("GEM3y");
-	auto GEM4x_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("GEM4x");
-	auto GEM4y_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("GEM4y");
-	auto MM1x_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("MM1x");
-	auto MM1y_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("MM1y");
-	auto MM2x_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("MM2x");
-	auto MM2y_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("MM2y");
-	auto MM3x_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("MM3x");
-	auto MM3y_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("MM3y");
-	auto MM4x_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("MM4x");
-	auto MM4y_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("MM4y");
-	auto MM5x_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("MM5x");
-	auto MM5y_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("MM5y");
-	auto MM6x_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("MM6x");
-	auto MM6y_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("MM6y");
-	auto MM7x_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("MM7x");
-	auto MM7y_vec = *d.Take<vector<double>, ROOT::VecOps::RVec<vector<double>>>("MM7y");
-	time_t t1_take = time(0);
-	cout << "Time for .Take action: " << t1_take - t0_take << " s" << endl;
 
 
 
