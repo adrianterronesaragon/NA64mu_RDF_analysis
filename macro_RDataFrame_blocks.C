@@ -72,7 +72,7 @@ void macro_RDataFrame_blocks() {
 	// 
 	//
 	// Binning
-	const int nbins = 120;
+	const int nbins = 300;
 	//
 	// Histogram limits
 	double xlow_MM5 = -174 - 10;
